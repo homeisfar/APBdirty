@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">APB</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="na">N/A</string>
+    <string name="dog">Dog</string>
+    <string name="cat">Cat</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="locationText">Enter Zip Code</string>
+    <string name="locationButton">Current Location</string>
+    <string name="searchText">Search!</string>
+
+
+    <!-- Form Fragment Strings -->
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_list_view_result">ListViewResultActivity</string>
+
+</resources>

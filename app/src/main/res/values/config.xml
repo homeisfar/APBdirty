@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="google_key">AIzaSyCza74sUNg2YNI4a4DNwLnC9JeShKDRMIo</string>
+    <string name="soda_endpoint">https://data.austintexas.gov/resource/kz4x-q9k5.json</string>
+    <string name="soda_token">sb3OofqQ9zQqC9N4iKRAFFT2L</string>
+</resources>

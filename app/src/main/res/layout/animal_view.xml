@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/animal_breed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/animal_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animal_breed" />
+
+    <!--<TextView android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/animal_breed"-->
+    <!--android:paddingLeft="8dp"-->
+    <!--android:layout_toRightOf="@id/earthquake_item_magnitude"-->
+    <!--android:id="@+id/earthquake_item_depth" />-->
+
+
+</RelativeLayout>
