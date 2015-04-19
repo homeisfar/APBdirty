@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/Android_Projects/APB/soda-android-sdk/build/intermediates/exploded-aar/com.google.android.gms/play-services/3.1.36/res/values-th/strings.xml -->
+    <!-- From: file:/C:/Users/alih/Documents/android/apb/soda-android-sdk/build/intermediates/exploded-aar/com.google.android.gms/play-services/3.1.36/res/values-th/strings.xml -->
     <eat-comment/>
     <string msgid="4181637455539816337" name="common_google_play_services_enable_button">"เปิดใช้งานบริการ Google Play"</string>
     <string msgid="7627896071867667758" name="common_google_play_services_enable_text">"แอปพลิเคชันนี้จะไม่ทำงานจนกว่าคุณจะเปิดใช้งานบริการ Google Play"</string>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/Android_Projects/APB/soda-android-sdk/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/alih/Documents/android/apb/soda-android-sdk/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="app_name">soda-android-sdk</string>
     <string name="more">More</string>
-    <!-- From: file:/E:/Android_Projects/APB/soda-android-sdk/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/alih/Documents/android/apb/soda-android-sdk/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
