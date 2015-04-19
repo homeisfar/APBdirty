@@ -1,6 +1,12 @@
 package thv92.apb;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,7 +24,9 @@ import com.socrata.android.client.Consumer;
 import com.socrata.android.client.Response;
 import com.socrata.android.soql.Query;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import thv92.apb.Model.Animal;
 
@@ -33,7 +41,10 @@ public class MainActivity extends ActionBarActivity {
     private Button searchButton;
 
     private EditText locationText;
-
+    private Geocoder geocoder;
+    private double latitude;
+    private double longitude;
+    private static final String BULLETIN_TAG = "AustinPB";
 
     final static String TAG_LISTENER = "Listeners";
 
@@ -45,6 +56,9 @@ public class MainActivity extends ActionBarActivity {
         //Connects buttons and spinners
         configUIElements();
         setClickListeners();
+        geocoder = new Geocoder(this, Locale.ENGLISH);
+        latitude = 30.2500;
+        longitude = -97.7500;
 
         Consumer consumer = new Consumer("https://data.austintexas.gov/resource/kz4x-q9k5.json", "sb3OofqQ9zQqC9N4iKRAFFT2L");
         Query query = new Query("kz4x-q9k5.json", Animal.class);
@@ -128,6 +142,97 @@ public class MainActivity extends ActionBarActivity {
                 intent.putExtra("kind", kindSpinner.getSelectedItem().toString());
                 intent.putExtra("location", locationText.getText().toString());
                 startActivity(intent);
+            }
+        });
+
+        currentLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+        public void onClick(View view) {
+                Log.d(BULLETIN_TAG, "Clicked on current location Button");
+
+
+                class MyLocationListener implements LocationListener {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        longitude = location.getLongitude();
+                        latitude = location.getLatitude();
+
+                        Log.d(BULLETIN_TAG, "Long: " + longitude);
+                        Log.d(BULLETIN_TAG, "Lat: " + latitude);
+                    }
+
+                    @Override
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                    }
+
+                    @Override
+                    public void onProviderEnabled(String provider) {
+
+                    }
+
+                    @Override
+                    public void onProviderDisabled(String provider) {
+
+                    }
+                }
+
+                if(longitude != 0 && latitude != 0) {
+
+                    LocationManager mgr;
+                    mgr = (LocationManager) getSystemService(LOCATION_SERVICE);
+                    Criteria criteria = new Criteria();
+
+                    String best = mgr.getBestProvider(criteria, true);
+                    Log.d(BULLETIN_TAG, "Best provider: " + best);
+
+                    Location loc = mgr.getLastKnownLocation(best);
+
+                    LocationListener mLocListener = new MyLocationListener();
+
+                    if (loc == null) {
+                        mgr.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, mLocListener);
+                        loc = mgr.getLastKnownLocation(best);
+                    }
+
+                    if (loc != null) {
+                        longitude = loc.getLongitude();
+                        latitude = loc.getLatitude();
+                    }
+
+                }//if guard on whether or not last known location exists.
+                //TODO: Fix the damn geolocation long/latitude
+
+                List<Address> addresses = null;
+                try {
+                    addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Address address = null;
+                String addr="";
+                String zipcode="";
+                String city="";
+                String state="";
+                if (addresses != null && addresses.size() > 0){
+                    addr=addresses.get(0).getAddressLine(0)+"," +addresses.get(0).getSubAdminArea();
+                    city=addresses.get(0).getLocality();
+                    state = addresses.get(0).getAdminArea();
+
+                    for (int i = 0; i < addresses.size(); i++){
+                        address = addresses.get(i);
+                        if(address.getPostalCode() != null){
+                            zipcode=address.getPostalCode();
+                            Log.d(BULLETIN_TAG, "Found zipcode: " + zipcode);
+                            Log.d(BULLETIN_TAG, "Latitude: " + latitude);
+                            Log.d(BULLETIN_TAG, "Longitude: : " + longitude);
+
+                            break;
+                        }
+                    }
+                }
+
+                locationText.setText(zipcode);
             }
         });
 

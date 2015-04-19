@@ -15,6 +15,14 @@
     <string name="searchText">Search!</string>
 
 
+    <string name="austin_database">Austin Database</string>
+    <string name="lost_connection">Lost connection</string>
+    <string name="no_connection">No connection to the Internet</string>
+    <string name="wifi_connected">Connected to WiFi</string>
+    <string name="downloading_message">Downloading from server...</string>
+    <string name="title_activity_list_result">ListResultActivity</string>
+
+
     <!-- Form Fragment Strings -->
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
